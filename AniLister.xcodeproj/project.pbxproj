@@ -7,20 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0099DD742A6B674A0058DDEE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099DD732A6B674A0058DDEE /* AppDelegate.swift */; };
-		0099DD782A6B674A0058DDEE /* Main.html in Resources */ = {isa = PBXBuildFile; fileRef = 0099DD762A6B674A0058DDEE /* Main.html */; };
-		0099DD7A2A6B674A0058DDEE /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0099DD792A6B674A0058DDEE /* Icon.png */; };
-		0099DD7C2A6B674A0058DDEE /* Style.css in Resources */ = {isa = PBXBuildFile; fileRef = 0099DD7B2A6B674A0058DDEE /* Style.css */; };
-		0099DD7E2A6B674A0058DDEE /* Script.js in Resources */ = {isa = PBXBuildFile; fileRef = 0099DD7D2A6B674A0058DDEE /* Script.js */; };
-		0099DD802A6B674A0058DDEE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099DD7F2A6B674A0058DDEE /* ViewController.swift */; };
-		0099DD832A6B674A0058DDEE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0099DD812A6B674A0058DDEE /* Main.storyboard */; };
+		002C10B02A6C817C00449C14 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C10AF2A6C817C00449C14 /* SafariExtensionHandler.swift */; };
+		002C10B32A6C992400449C14 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 002C10B22A6C927200449C14 /* script.js */; };
+		002C10B52A6D9EE100449C14 /* HelpButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C10B42A6D9EE100449C14 /* HelpButtonView.swift */; };
 		0099DD852A6B67520058DDEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0099DD842A6B67520058DDEE /* Assets.xcassets */; };
 		0099DD8D2A6B67520058DDEE /* AniLister Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0099DD8C2A6B67520058DDEE /* AniLister Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		0099DD922A6B67520058DDEE /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099DD912A6B67520058DDEE /* SafariExtensionHandler.swift */; };
-		0099DD942A6B67520058DDEE /* SafariExtensionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099DD932A6B67520058DDEE /* SafariExtensionViewController.swift */; };
-		0099DD972A6B67520058DDEE /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 0099DD962A6B67520058DDEE /* script.js */; };
-		0099DD992A6B67520058DDEE /* ToolbarItemIcon.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 0099DD982A6B67520058DDEE /* ToolbarItemIcon.pdf */; };
-		0099DD9C2A6B67520058DDEE /* SafariExtensionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0099DD9A2A6B67520058DDEE /* SafariExtensionViewController.xib */; };
+		0099DDA92A6B6E780058DDEE /* AniListerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099DDA82A6B6E780058DDEE /* AniListerApp.swift */; };
+		0099DDAB2A6B6FF50058DDEE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099DDAA2A6B6FF50058DDEE /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,25 +41,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		002C10A42A6C711E00449C14 /* AniLister.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AniLister.entitlements; sourceTree = "<group>"; };
+		002C10AC2A6C7CC900449C14 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		002C10AF2A6C817C00449C14 /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
+		002C10B22A6C927200449C14 /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.javascript; };
+		002C10B42A6D9EE100449C14 /* HelpButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpButtonView.swift; sourceTree = "<group>"; };
+		002C10B62A6DC2CA00449C14 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		002C10B72A6DC2E300449C14 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		002C10B92A6DCA7F00449C14 /* Example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Example.png; sourceTree = "<group>"; };
 		0099DD702A6B674A0058DDEE /* AniLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AniLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0099DD732A6B674A0058DDEE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0099DD772A6B674A0058DDEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.html; name = Base; path = ../Base.lproj/Main.html; sourceTree = "<group>"; };
-		0099DD792A6B674A0058DDEE /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		0099DD7B2A6B674A0058DDEE /* Style.css */ = {isa = PBXFileReference; lastKnownFileType = text.css; path = Style.css; sourceTree = "<group>"; };
-		0099DD7D2A6B674A0058DDEE /* Script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = Script.js; sourceTree = "<group>"; };
-		0099DD7F2A6B674A0058DDEE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		0099DD822A6B674A0058DDEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0099DD842A6B67520058DDEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0099DD862A6B67520058DDEE /* AniLister.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AniLister.entitlements; sourceTree = "<group>"; };
-		0099DD872A6B67520058DDEE /* AniLister.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AniLister.entitlements; sourceTree = "<group>"; };
 		0099DD8C2A6B67520058DDEE /* AniLister Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "AniLister Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
-		0099DD912A6B67520058DDEE /* SafariExtensionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionHandler.swift; sourceTree = "<group>"; };
-		0099DD932A6B67520058DDEE /* SafariExtensionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariExtensionViewController.swift; sourceTree = "<group>"; };
-		0099DD962A6B67520058DDEE /* script.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = script.js; sourceTree = "<group>"; };
-		0099DD982A6B67520058DDEE /* ToolbarItemIcon.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = ToolbarItemIcon.pdf; sourceTree = "<group>"; };
-		0099DD9B2A6B67520058DDEE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/SafariExtensionViewController.xib; sourceTree = "<group>"; };
 		0099DD9D2A6B67520058DDEE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0099DD9E2A6B67520058DDEE /* AniLister_Extension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = AniLister_Extension.entitlements; sourceTree = "<group>"; };
+		0099DDA82A6B6E780058DDEE /* AniListerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AniListerApp.swift; sourceTree = "<group>"; };
+		0099DDAA2A6B6FF50058DDEE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,11 +76,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		002C10B12A6C924100449C14 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				002C10B22A6C927200449C14 /* script.js */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		002C10B82A6DCA3700449C14 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				002C10B92A6DCA7F00449C14 /* Example.png */,
+			);
+			path = Documentation;
+			sourceTree = "<group>";
+		};
 		0099DD672A6B674A0058DDEE = {
 			isa = PBXGroup;
 			children = (
+				002C10B72A6DC2E300449C14 /* README.md */,
+				002C10B62A6DC2CA00449C14 /* LICENSE */,
 				0099DD722A6B674A0058DDEE /* AniLister */,
 				0099DD902A6B67520058DDEE /* AniLister Extension */,
+				002C10B82A6DCA3700449C14 /* Documentation */,
 				0099DD712A6B674A0058DDEE /* Products */,
 			);
 			sourceTree = "<group>";
@@ -108,48 +116,25 @@
 		0099DD722A6B674A0058DDEE /* AniLister */ = {
 			isa = PBXGroup;
 			children = (
-				0099DD732A6B674A0058DDEE /* AppDelegate.swift */,
-				0099DD7F2A6B674A0058DDEE /* ViewController.swift */,
-				0099DD812A6B674A0058DDEE /* Main.storyboard */,
+				0099DDA82A6B6E780058DDEE /* AniListerApp.swift */,
+				0099DDAA2A6B6FF50058DDEE /* ContentView.swift */,
+				002C10B42A6D9EE100449C14 /* HelpButtonView.swift */,
+				002C10A42A6C711E00449C14 /* AniLister.entitlements */,
 				0099DD842A6B67520058DDEE /* Assets.xcassets */,
-				0099DD862A6B67520058DDEE /* AniLister.entitlements */,
-				0099DD872A6B67520058DDEE /* AniLister.entitlements */,
-				0099DD752A6B674A0058DDEE /* Resources */,
+				002C10AC2A6C7CC900449C14 /* Info.plist */,
 			);
 			path = AniLister;
-			sourceTree = "<group>";
-		};
-		0099DD752A6B674A0058DDEE /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0099DD762A6B674A0058DDEE /* Main.html */,
-				0099DD792A6B674A0058DDEE /* Icon.png */,
-				0099DD7B2A6B674A0058DDEE /* Style.css */,
-				0099DD7D2A6B674A0058DDEE /* Script.js */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		0099DD902A6B67520058DDEE /* AniLister Extension */ = {
 			isa = PBXGroup;
 			children = (
-				0099DD912A6B67520058DDEE /* SafariExtensionHandler.swift */,
-				0099DD932A6B67520058DDEE /* SafariExtensionViewController.swift */,
-				0099DD9A2A6B67520058DDEE /* SafariExtensionViewController.xib */,
+				002C10AF2A6C817C00449C14 /* SafariExtensionHandler.swift */,
 				0099DD9D2A6B67520058DDEE /* Info.plist */,
 				0099DD9E2A6B67520058DDEE /* AniLister_Extension.entitlements */,
-				0099DD952A6B67520058DDEE /* Resources */,
+				002C10B12A6C924100449C14 /* Resources */,
 			);
 			path = "AniLister Extension";
-			sourceTree = "<group>";
-		};
-		0099DD952A6B67520058DDEE /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				0099DD962A6B67520058DDEE /* script.js */,
-				0099DD982A6B67520058DDEE /* ToolbarItemIcon.pdf */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -203,9 +188,11 @@
 				TargetAttributes = {
 					0099DD6F2A6B674A0058DDEE = {
 						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
 					};
 					0099DD8B2A6B67520058DDEE = {
 						CreatedOnToolsVersion = 15.0;
+						LastSwiftMigration = 1500;
 					};
 				};
 			};
@@ -233,12 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0099DD7A2A6B674A0058DDEE /* Icon.png in Resources */,
-				0099DD832A6B674A0058DDEE /* Main.storyboard in Resources */,
-				0099DD7E2A6B674A0058DDEE /* Script.js in Resources */,
-				0099DD782A6B674A0058DDEE /* Main.html in Resources */,
 				0099DD852A6B67520058DDEE /* Assets.xcassets in Resources */,
-				0099DD7C2A6B674A0058DDEE /* Style.css in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,9 +228,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0099DD9C2A6B67520058DDEE /* SafariExtensionViewController.xib in Resources */,
-				0099DD992A6B67520058DDEE /* ToolbarItemIcon.pdf in Resources */,
-				0099DD972A6B67520058DDEE /* script.js in Resources */,
+				002C10B32A6C992400449C14 /* script.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,8 +239,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0099DD802A6B674A0058DDEE /* ViewController.swift in Sources */,
-				0099DD742A6B674A0058DDEE /* AppDelegate.swift in Sources */,
+				002C10B52A6D9EE100449C14 /* HelpButtonView.swift in Sources */,
+				0099DDAB2A6B6FF50058DDEE /* ContentView.swift in Sources */,
+				0099DDA92A6B6E780058DDEE /* AniListerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,8 +249,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0099DD942A6B67520058DDEE /* SafariExtensionViewController.swift in Sources */,
-				0099DD922A6B67520058DDEE /* SafariExtensionHandler.swift in Sources */,
+				002C10B02A6C817C00449C14 /* SafariExtensionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -282,33 +262,6 @@
 			targetProxy = 0099DD8E2A6B67520058DDEE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		0099DD762A6B674A0058DDEE /* Main.html */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0099DD772A6B674A0058DDEE /* Base */,
-			);
-			name = Main.html;
-			sourceTree = "<group>";
-		};
-		0099DD812A6B674A0058DDEE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0099DD822A6B674A0058DDEE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		0099DD9A2A6B67520058DDEE /* SafariExtensionViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0099DD9B2A6B67520058DDEE /* Base */,
-			);
-			name = SafariExtensionViewController.xib;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0099DD9F2A6B67520058DDEE /* Debug */ = {
@@ -432,6 +385,7 @@
 		0099DDA22A6B67520058DDEE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "AniLister Extension/AniLister_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -439,14 +393,13 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AniLister Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "AniLister Extension";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_CFBundleDisplayName = AniLister;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -456,6 +409,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -463,6 +417,7 @@
 		0099DDA32A6B67520058DDEE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "AniLister Extension/AniLister_Extension.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -470,14 +425,13 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "AniLister Extension/Info.plist";
-				INFOPLIST_KEY_CFBundleDisplayName = "AniLister Extension";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_CFBundleDisplayName = AniLister;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -497,6 +451,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = AniLister/AniLister.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -505,6 +460,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = AniLister;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -512,7 +468,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",
@@ -523,6 +479,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.kyleerhabor.AniLister;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
@@ -533,6 +490,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = AniLister/AniLister.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -541,6 +499,8 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_CFBundleDisplayName = AniLister;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
+				INFOPLIST_KEY_LSUIElement = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -548,7 +508,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
 				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"-framework",

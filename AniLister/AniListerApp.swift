@@ -5,4 +5,13 @@
 //  Created by Kyle Erhabor on 7/21/23.
 //
 
-import Foundation
+import SwiftUI
+
+@main
+struct AniListerApp: App {
+  var body: some Scene {
+    Window("AniLister", id: "app") {
+      ContentView()
+    }
+  }
+}
