@@ -1,3 +1,4 @@
+const second = 1000
 const query = `
 query($id: Int) {
   Media(id: $id) {
@@ -59,7 +60,10 @@ safari.self.addEventListener("message", ({ name, message }) => {
   const synopsis = message.synopsis;
   const desc = document.getElementsByClassName("description")[0];
 
-  desc.innerText = synopsis;
+  // Add a delay in case the description isn't updated by AniList in time.
+  setTimeout(() => {
+    desc.innerText = synopsis;
+  }, second)
 });
 
 function activate() {
@@ -84,5 +88,5 @@ document.addEventListener("DOMContentLoaded", function(event) {
 
       activate()
     }
-  }, 1_000)
+  }, second)
 });
