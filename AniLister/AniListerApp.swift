@@ -12,6 +12,6 @@ struct AniListerApp: App {
   var body: some Scene {
     Window("AniLister", id: "app") {
       ContentView()
-    }
+    }.defaultSize(width: 544, height: 256)
   }
 }

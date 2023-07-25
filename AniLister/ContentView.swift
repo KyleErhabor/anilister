@@ -10,7 +10,7 @@ import SafariServices
 
 let bundleIdentifier = Bundle.main.bundleIdentifier!
 let extensionBundleIdentifier = "\(bundleIdentifier).Extension"
-let appGroupIdentifier = "group.\(bundleIdentifier)"
+let appGroupIdentifier = "UY7357XWK6.\(bundleIdentifier)"
 
 let appGroupDefaults = UserDefaults(suiteName: appGroupIdentifier)
 
@@ -39,6 +39,7 @@ struct ContentView: View {
       LabeledContent("MyAnimeList API Client ID") {
         TextField("MyAnimeList API Client ID", text: $malClientId)
           .labelsHidden()
+          .fontDesign(.monospaced)
 
         HelpButtonView {
           displayApiHelp.toggle()
@@ -107,6 +108,7 @@ struct ContentView: View {
       }
     }
     .formStyle(.grouped)
+    .frame(minWidth: 544, minHeight: 128)
     .onReceive(NotificationCenter.default.publisher(for: NSApplication.willBecomeActiveNotification)) { _ in
       Task {
         await checkExtensionEnabledState()

@@ -8,7 +8,7 @@
 import SafariServices
 import os
 
-let appGroupDefaults = UserDefaults(suiteName: "group.com.kyleerhabor.AniLister")!
+let appGroupDefaults = UserDefaults(suiteName: "UY7357XWK6.com.kyleerhabor.AniLister")!
 
 let logger = Logger()
 let malBaseUrl = URL(string: "https://api.myanimelist.net/v2")!
