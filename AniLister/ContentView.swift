@@ -20,7 +20,8 @@ struct ContentView: View {
   @AppStorage("malClientId", store: appGroupDefaults) private var malClientId = ""
   @AppStorage("onlyMalRewrite", store: appGroupDefaults) private var onlyMalRewrite = false
   @State private var isExtensionEnabled: Bool?
-  @State private var shouldDisplayHelp = false
+  @State private var displayApiHelp = false
+  @State private var displayMalRewriteHelp = false
 
   var body: some View {
     Form {
@@ -36,21 +37,32 @@ struct ContentView: View {
       }
 
       LabeledContent("MyAnimeList API Client ID") {
-        TextField(text: $malClientId) {}
+        TextField("MyAnimeList API Client ID", text: $malClientId)
           .labelsHidden()
 
         HelpButtonView {
-          shouldDisplayHelp.toggle()
-        }.popover(isPresented: $shouldDisplayHelp, arrowEdge: .trailing) {
+          displayApiHelp.toggle()
+        }.popover(isPresented: $displayApiHelp, arrowEdge: .trailing) {
           ScrollView {
             VStack(alignment: .leading, spacing: 16) {
-              Text("AniLister relies on MyAnimeList's API to retrieve its descriptions (an API is a means for one process to communicate with another). While MyAnimeList's API is public, the ID used to identify the client (here, AniLister) is considered private and can't be provided by default. For AniLister to work, you'll need to create your own client and supply your own ID.")
-              
+              Text("For AniLister to retrieve synopses from MyAnimeList directly, the official API is used to communicate with the service.")
+
+              Text("While MyAnimeList's official API is public, the ID used to identify clients (here, AniLister) is considered private and can't be provided by default. To circumvent this limitation, AniLister provides two solutions:")
+
               VStack(alignment: .leading) {
-                Text("1. [Login to MyAnimeList](https://myanimelist.net/)")
-                Text("2. [From your preferences, go to the API tab](https://myanimelist.net/apiconfig)")
-                Text("3. [Create a client ID](https://myanimelist.net/apiconfig/create) with the following information:")
-                
+                Text("• Leave this field blank, and AniLister will rely on [Jikan](https://jikan.moe/) to query MyAnimeList")
+                Text("• Create a client ID on MyAnimeList (following the instructions below) and provide it in the text field")
+              }
+
+              Text("Jikan is a third-party service which acts as a proxy between you and MyAnimeList. It's ideal if you don't have a MyAnimeList account or don't want to go through the API setup process below, but it may be unstable at times. A notable limitation in the service is that line breaks are not used, causing synopses to appear as one long paragraph.")
+
+              Text("To create your own client ID,")
+
+              VStack(alignment: .leading) {
+                Text("`1.` [Login to MyAnimeList](https://myanimelist.net/)")
+                Text("`2.` [From your preferences, go to the API tab](https://myanimelist.net/apiconfig)")
+                Text("`3.` [Create a client ID](https://myanimelist.net/apiconfig/create) with the following information:")
+
                 Group {
                   Text("**App Name** as AniLister")
                   Text("**App Type** as other")
@@ -62,22 +74,36 @@ struct ContentView: View {
                   Text("**Purpose of Use** as hobbyist")
                 }.padding(.leading, 16)
 
-                Text("4. Agree to the API License and Developer Agreement")
-                Text("5. Hit the submit button")
-                Text("6. After being redirected back to the API tab, click the edit button for the client you just created")
-                Text("7. Copy the client ID and paste it into AniLister's designated field")
+                Text("`4.` Agree to the API License and Developer Agreement")
+                Text("`5.` Hit the submit button")
+                Text("`6.` After being redirected back to the API tab, click the edit button for the client you just created")
+                Text("`7.` Copy the client ID and paste it into the \"MyAnimeList API Client ID\" text field")
               }
             }
+            .textSelection(.enabled)
             .foregroundStyle(Color.primary)
             .multilineTextAlignment(.leading)
             .padding()
-          }
-          .frame(width: 384, height: 256)
+          }.frame(width: 384, height: 256)
         }
       }
 
       Section {
-        Toggle("Only use MAL Rewrite", isOn: $onlyMalRewrite)
+        LabeledContent("Only use MAL Rewrite") {
+          Toggle("Only use MAL Rewrite", isOn: $onlyMalRewrite)
+            .labelsHidden()
+            .toggleStyle(.switch)
+
+          HelpButtonView {
+            displayMalRewriteHelp.toggle()
+          }.popover(isPresented: $displayMalRewriteHelp, arrowEdge: .trailing) {
+            Text("MAL Rewrite is a project on MyAnimeList tasked with improving synopses on the service. You can limit AniLister to only replace a description if it's corresponding synopsis on MyAnimeList was written by the project.")
+              .foregroundStyle(Color.primary)
+              .multilineTextAlignment(.leading)
+              .padding()
+              .frame(width: 384)
+          }
+        }
       }
     }
     .formStyle(.grouped)

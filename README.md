@@ -22,13 +22,3 @@ An example using the [Alien 9](https://anilist.co/anime/1177/Alien-9) anime.
 <details>
   <img src="Documentation/Example.png">
 </details>
-
-## Limitations
-
-### API
-
-For AniLister to retrieve synopses from MyAnimeList, it requires a MyAnimeList API Client ID—of which must be created by the user (you!). There are instructions on how to create one in the app, but this is not always desirable, since it requires a MyAnimeList account and setup process. It would be possible to use the [Jikan API](https://jikan.moe/), which acts as a proxy between the end user and MyAnimeList without the need for a client ID (at the cost of stability).
-
-### Descriptions
-
-AniLister replaces *all* anime & manga descriptions on AniList with MyAnimeList synopses. This may not always be desired, since not all MyAnimeList synopses are great (specifically those which aren't written by MAL Rewrite). In the future, I may provide a setting to only use certain synopses matching a criteria.

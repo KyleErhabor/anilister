@@ -11,12 +11,17 @@ import os
 let appGroupDefaults = UserDefaults(suiteName: "group.com.kyleerhabor.AniLister")!
 
 let logger = Logger()
-let malBaseUrl = {
-  var url = URL(string: "https://api.myanimelist.net/v2")!
-  url.append(queryItems: [.init(name: "fields", value: "synopsis")])
+let malBaseUrl = URL(string: "https://api.myanimelist.net/v2")!
+let jikanBaseUrl = URL(string: "https://api.jikan.moe/v4")!
 
-  return url
-}()
+func malClientId() -> String? {
+  guard let id = appGroupDefaults.string(forKey: "malClientId"),
+        !id.isEmpty else {
+    return nil
+  }
+
+  return id
+}
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
   override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]? = nil) {
@@ -26,35 +31,54 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
       return
     }
 
-    guard let clientId = appGroupDefaults.string(forKey: "malClientId"),
-          !clientId.isEmpty else {
-      logger.warning("No MyAnimeList API Client ID provided.")
-
-      return
-    }
-
     let info = userInfo!
     let type = info["type"] as! String
     let id = info["id"] as! Int
-    let url = malBaseUrl
-      .appending(path: type)
-      .appending(path: String(id))
 
     Task {
-      var request = URLRequest(url: url)
-      request.setValue(clientId, forHTTPHeaderField: "X-MAL-CLIENT-ID")
+      var request: URLRequest
+      let clientId = malClientId()
+
+      if let clientId {
+        let url = malBaseUrl
+          .appending(components: type, String(id))
+          .appending(queryItems: [.init(name: "fields", value: "synopsis")])
+
+        request = URLRequest(url: url)
+        request.setValue(clientId, forHTTPHeaderField: "X-MAL-CLIENT-ID")
+      } else {
+        logger.info("ljdskajfsjdflksjdf: Using Jikan")
+
+        let url = jikanBaseUrl
+          .appending(components: type, String(id))
+
+        request = URLRequest(url: url)
+      }
 
       let (data, _) = try await URLSession.shared.data(for: request)
 
-      guard let animanga = try JSONSerialization.jsonObject(with: data) as? [String : Any] else {
+      guard let body = try JSONSerialization.jsonObject(with: data) as? [String : Any] else {
         return
       }
 
-      if appGroupDefaults.bool(forKey: "onlyMalRewrite") && (animanga["synopsis"] as? String)?.contains("Written by MAL Rewrite") != true {
+      guard let synopsis = (
+        clientId == nil
+          // Jikan
+          ? (body["data"] as? [String : Any])?["synopsis"]
+          // MyAnimeList
+          : body["synopsis"]
+      // While Jikan doesn't do this, MyAnimeList does return empty synopses, which we don't want.
+      ) as? String, !synopsis.isEmpty else {
+        // If we couldn't get a synosis out of the body, do we really need to continue? Leaving the description alone
+        // should be fine (though, it may be a bit confusing to a keen user).
         return
       }
 
-      page.dispatchMessageToScript(withName: "MALResponse", userInfo: animanga)
+      if appGroupDefaults.bool(forKey: "onlyMalRewrite") && !synopsis.contains("Written by MAL Rewrite") {
+        return
+      }
+
+      page.dispatchMessageToScript(withName: "MALResponse", userInfo: ["synopsis": synopsis])
     }
   }
 }
