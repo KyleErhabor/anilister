@@ -45,42 +45,40 @@ struct ContentView: View {
           displayApiHelp.toggle()
         }.popover(isPresented: $displayApiHelp, arrowEdge: .trailing) {
           ScrollView {
-            VStack(alignment: .leading, spacing: 16) {
-              Text("For AniLister to retrieve synopses from MyAnimeList directly, the official API is used to communicate with the service.")
+            Text("""
+For AniLister to retrieve synopses from MyAnimeList directly, the official API is used to communicate with the service.
 
-              Text("While MyAnimeList's official API is public, the ID used to identify clients (here, AniLister) is considered private and can't be provided by default. To circumvent this limitation, AniLister provides two solutions:")
+While MyAnimeList's official API is public, the ID used to identify clients (here, AniLister) is considered private and \
+can't be provided by default. To circumvent this limitation, AniLister provides two solutions:
 
-              VStack(alignment: .leading) {
-                Text("• Leave this field blank, and AniLister will rely on [Jikan](https://jikan.moe/) to query MyAnimeList")
-                Text("• Create a client ID on MyAnimeList (following the instructions below) and provide it in the text field")
-              }
+• Leave this field blank, and AniLister will rely on [Jikan](https://jikan.moe/) to query MyAnimeList
+• Create a client ID on MyAnimeList (following the instructions below) and provide it in the text field
 
-              Text("Jikan is a third-party service which acts as a proxy between you and MyAnimeList. It's ideal if you don't have a MyAnimeList account or don't want to go through the API setup process below, but it may be unstable at times. A notable limitation in the service is that line breaks are not used, causing synopses to appear as one long paragraph.")
+Jikan is a third-party service which acts as a proxy between you and MyAnimeList. It's ideal if you don't have a \
+MyAnimeList account or don't want to go through the API setup process below, but it may be unstable at times. A \
+notable limitation is that line breaks are not used, causing synopses to appear as one long paragraph.
 
-              Text("To create your own client ID,")
+To create your own client ID,
 
-              VStack(alignment: .leading) {
-                Text("`1.` [Login to MyAnimeList](https://myanimelist.net/)")
-                Text("`2.` [From your preferences, go to the API tab](https://myanimelist.net/apiconfig)")
-                Text("`3.` [Create a client ID](https://myanimelist.net/apiconfig/create) with the following information:")
+`1.` [Login to MyAnimeList](https://myanimelist.net/)
+`2.` [From your preferences, go to the API tab](https://myanimelist.net/apiconfig)
+`3.` [Create a client ID](https://myanimelist.net/apiconfig/create) with the following information:
 
-                Group {
-                  Text("**App Name** as AniLister")
-                  Text("**App Type** as other")
-                  Text("**App Description** as \"Preview MyAnimeList data on AniList (currently anime and manga).\"")
-                  Text("**App Redirect URL** as \"https://localhost/\" (note that, while this field is marked as required, AniLister does not utilize it)")
-                  Text("**Homepage URL** as https://github.com/KyleErhabor/anilister")
-                  Text("**Commercial / Non-Commercial** as non-commercial")
-                  Text("**Name / Company Name** as your own name")
-                  Text("**Purpose of Use** as hobbyist")
-                }.padding(.leading, 16)
+    **App Name** as "AniLister"
+    **App Type** as other
+    **App Description** as "Preview MyAnimeList data on AniList (currently anime and manga)."
+    **App Redirect URL** as "https://localhost/" (note that, while this field is marked as required, AniLister does \
+not utilize it)
+    **Homepage URL** as "https://github.com/KyleErhabor/anilister"
+    **Commercial / Non-Commercial** as non-commercial
+    **Name / Company Name** as your own name
+    **Purpose of Use** as hobbyist
 
-                Text("`4.` Agree to the API License and Developer Agreement")
-                Text("`5.` Hit the submit button")
-                Text("`6.` After being redirected back to the API tab, click the edit button for the client you just created")
-                Text("`7.` Copy the client ID and paste it into the \"MyAnimeList API Client ID\" text field")
-              }
-            }
+`4.` Agree to the API License and Developer Agreement
+`5.` Hit the submit button
+`6.` After being redirected back to the API tab, click the edit button for the client you just created
+`7.` Copy the client ID and paste it into the \"MyAnimeList API Client ID\" text field
+""")
             .textSelection(.enabled)
             .foregroundStyle(Color.primary)
             .multilineTextAlignment(.leading)
@@ -98,7 +96,11 @@ struct ContentView: View {
           HelpButtonView {
             displayMalRewriteHelp.toggle()
           }.popover(isPresented: $displayMalRewriteHelp, arrowEdge: .trailing) {
-            Text("MAL Rewrite is a project on MyAnimeList tasked with improving synopses on the service. You can limit AniLister to only replace a description if it's corresponding synopsis on MyAnimeList was written by the project.")
+            Text("""
+MAL Rewrite is a project on MyAnimeList tasked with improving synopses on the service. You can limit AniLister to only \
+replace a description if it's corresponding synopsis on MyAnimeList was written by the project.
+""")
+              .textSelection(.enabled)
               .foregroundStyle(Color.primary)
               .multilineTextAlignment(.leading)
               .padding()
