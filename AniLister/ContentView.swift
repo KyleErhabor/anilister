@@ -18,6 +18,7 @@ struct ContentView: View {
   @Environment(\.scenePhase) var scenePhase
 
   @AppStorage("malClientId", store: appGroupDefaults) private var malClientId = ""
+  @AppStorage("onlyMalRewrite", store: appGroupDefaults) private var onlyMalRewrite = false
   @State private var isExtensionEnabled: Bool?
   @State private var shouldDisplayHelp = false
 
@@ -34,46 +35,49 @@ struct ContentView: View {
         }
       }
 
-      Section {
-        LabeledContent("MyAnimeList API Client ID") {
-          TextField(text: $malClientId) {}
-            .labelsHidden()
+      LabeledContent("MyAnimeList API Client ID") {
+        TextField(text: $malClientId) {}
+          .labelsHidden()
 
-          HelpButtonView {
-            shouldDisplayHelp.toggle()
-          }.popover(isPresented: $shouldDisplayHelp, arrowEdge: .trailing) {
-            ScrollView {
-              VStack(alignment: .leading, spacing: 16) {
-                Text("AniLister relies on MyAnimeList's API to retrieve its descriptions (an API is a means for one process to communicate with another). While MyAnimeList's API is public, the ID used to identify the client (here, AniLister) is considered private and can't be provided by default. For AniLister to work, you'll need to create your own client and supply your own ID.")
+        HelpButtonView {
+          shouldDisplayHelp.toggle()
+        }.popover(isPresented: $shouldDisplayHelp, arrowEdge: .trailing) {
+          ScrollView {
+            VStack(alignment: .leading, spacing: 16) {
+              Text("AniLister relies on MyAnimeList's API to retrieve its descriptions (an API is a means for one process to communicate with another). While MyAnimeList's API is public, the ID used to identify the client (here, AniLister) is considered private and can't be provided by default. For AniLister to work, you'll need to create your own client and supply your own ID.")
+              
+              VStack(alignment: .leading) {
+                Text("1. [Login to MyAnimeList](https://myanimelist.net/)")
+                Text("2. [From your preferences, go to the API tab](https://myanimelist.net/apiconfig)")
+                Text("3. [Create a client ID](https://myanimelist.net/apiconfig/create) with the following information:")
                 
-                VStack(alignment: .leading) {
-                  Text("1. [Login to MyAnimeList](https://myanimelist.net/)")
-                  Text("2. [From your preferences, go to the API tab](https://myanimelist.net/apiconfig)")
-                  Text("3. [Create a client ID](https://myanimelist.net/apiconfig/create) with the following information:")
-                  
-                  Group {
-                    Text("**App Name** as AniLister")
-                    Text("**App Type** as other")
-                    Text("**App Description** as \"Preview MyAnimeList data on AniList (currently anime and manga).\"")
-                    Text("**App Redirect URL** as \"https://localhost/\" (note that, while this field is marked as required, AniLister does not utilize it)")
-                    Text("**Homepage URL** as https://github.com/KyleErhabor/anilister")
-                    Text("**Commercial / Non-Commercial** as non-commercial")
-                    Text("**Name / Company Name** as your own name")
-                    Text("**Purpose of Use** as hobbyist")
-                  }.padding(.leading, 16)
+                Group {
+                  Text("**App Name** as AniLister")
+                  Text("**App Type** as other")
+                  Text("**App Description** as \"Preview MyAnimeList data on AniList (currently anime and manga).\"")
+                  Text("**App Redirect URL** as \"https://localhost/\" (note that, while this field is marked as required, AniLister does not utilize it)")
+                  Text("**Homepage URL** as https://github.com/KyleErhabor/anilister")
+                  Text("**Commercial / Non-Commercial** as non-commercial")
+                  Text("**Name / Company Name** as your own name")
+                  Text("**Purpose of Use** as hobbyist")
+                }.padding(.leading, 16)
 
-                  Text("4. Agree to the API License and Developer Agreement")
-                  Text("5. Hit the submit button")
-                  Text("6. After being redirected back to the API tab, click the edit button for the client you just created")
-                  Text("7. Copy the client ID and paste it into AniLister's designated field")
-                }
+                Text("4. Agree to the API License and Developer Agreement")
+                Text("5. Hit the submit button")
+                Text("6. After being redirected back to the API tab, click the edit button for the client you just created")
+                Text("7. Copy the client ID and paste it into AniLister's designated field")
               }
-              .multilineTextAlignment(.leading)
-              .padding()
             }
-            .frame(width: 384, height: 256)
+            .foregroundStyle(Color.primary)
+            .multilineTextAlignment(.leading)
+            .padding()
           }
+          .frame(width: 384, height: 256)
         }
+      }
+
+      Section {
+        Toggle("Only use MAL Rewrite", isOn: $onlyMalRewrite)
       }
     }
     .formStyle(.grouped)

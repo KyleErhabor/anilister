@@ -31,7 +31,7 @@ async function replaceDescription(page) {
   const malId = body.data.Media.idMal;
 
   // CORS
-  safari.extension.dispatchMessage("MalQuery", {
+  safari.extension.dispatchMessage("MALQuery", {
     type: page.type,
     id: malId
   });

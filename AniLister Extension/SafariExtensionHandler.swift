@@ -20,7 +20,7 @@ let malBaseUrl = {
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
   override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]? = nil) {
-    guard messageName == "MalQuery" else {
+    guard messageName == "MALQuery" else {
       logger.warning("Unknown message received: \(messageName)")
 
       return
@@ -46,8 +46,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
 
       let (data, _) = try await URLSession.shared.data(for: request)
 
-      // Since MyAnimeList is a remote service, I don't trust using as! here.
-      let animanga = try JSONSerialization.jsonObject(with: data) as? [String : Any]
+      guard let animanga = try JSONSerialization.jsonObject(with: data) as? [String : Any] else {
+        return
+      }
+
+      if appGroupDefaults.bool(forKey: "onlyMalRewrite") && (animanga["synopsis"] as? String)?.contains("Written by MAL Rewrite") != true {
+        return
+      }
 
       page.dispatchMessageToScript(withName: "MALResponse", userInfo: animanga)
     }
