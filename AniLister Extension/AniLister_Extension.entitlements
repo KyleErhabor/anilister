@@ -6,7 +6,7 @@
 	<true/>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>$(TeamIdentifierPrefix)com.kyleerhabor.AniLister</string>
+		<string>UY7357XWK6.com.kyleerhabor.AniLister</string>
 	</array>
 	<key>com.apple.security.network.client</key>
 	<true/>
