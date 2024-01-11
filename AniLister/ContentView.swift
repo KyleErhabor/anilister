@@ -5,30 +5,25 @@
 //  Created by Kyle Erhabor on 7/21/23.
 //
 
-import SwiftUI
+import OSLog
 import SafariServices
-
-let bundleIdentifier = Bundle.main.bundleIdentifier!
-let extensionBundleIdentifier = "\(bundleIdentifier).Extension"
-let appGroupIdentifier = "UY7357XWK6.\(bundleIdentifier)"
-
-let appGroupDefaults = UserDefaults(suiteName: appGroupIdentifier)
+import SwiftUI
 
 struct ContentView: View {
   @Environment(\.scenePhase) var scenePhase
 
-  @AppStorage("malClientId", store: appGroupDefaults) private var malClientId = ""
-  @AppStorage("onlyMalRewrite", store: appGroupDefaults) private var onlyMalRewrite = false
-  @State private var isExtensionEnabled: Bool?
+  @AppStorage(UserDefaults.malClientIDKey, store: .group) private var malClientId = ""
+  @AppStorage(UserDefaults.malRewriteKey, store: .group) private var onlyMalRewrite = false
+  @State private var enabled: Bool?
   @State private var displayApiHelp = false
   @State private var displayMalRewriteHelp = false
 
   var body: some View {
     Form {
-      if isExtensionEnabled == false {
+      if enabled == false {
         LabeledContent {
           Button("Enable...") {
-            SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier)
+            SFSafariApplication.showPreferencesForExtension(withIdentifier: Bundle.extensionIdentifier)
           }
         } label: {
           Label("AniLister is not enabled.", systemImage: "exclamationmark.triangle.fill")
@@ -113,26 +108,20 @@ replace a description if it's corresponding synopsis on MyAnimeList was written 
     .frame(minWidth: 544, minHeight: 128)
     .onReceive(NotificationCenter.default.publisher(for: NSApplication.willBecomeActiveNotification)) { _ in
       Task {
-        await checkExtensionEnabledState()
+        enabled = await isExtensionEnabled()
       }
     }
   }
 
-  func checkExtensionEnabledState() async {
+  func isExtensionEnabled() async -> Bool {
     do {
-      let state = try await SFSafariExtensionManager.stateOfSafariExtension(withIdentifier: extensionBundleIdentifier)
+      let state = try await SFSafariExtensionManager.stateOfSafariExtension(withIdentifier: Bundle.extensionIdentifier)
 
-      isExtensionEnabled = state.isEnabled
+      return state.isEnabled
     } catch {
-      // I currently don't see what could cause an error to be thrown.
-      print(error)
+      Logger.ui.error("Could not get Safari extension status: \(error)")
 
-      // Since we did not receive an explicit response, we're not sure if the extension is enabled at the moment.
-      isExtensionEnabled = nil
+      return false
     }
   }
-}
-
-#Preview {
-  ContentView()
 }

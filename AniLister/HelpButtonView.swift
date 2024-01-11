@@ -10,10 +10,10 @@ import SwiftUI
 class HelpButton: NSButton {
   typealias Action = () -> Void
 
-  var call: Action
+  var perform: Action
 
   init(action: @escaping Action) {
-    self.call = action
+    self.perform = action
 
     super.init(frame: .zero)
 
@@ -28,7 +28,7 @@ class HelpButton: NSButton {
   }
 
   @objc func click(_ sender: HelpButton) {
-    call()
+    perform()
   }
 }
 
@@ -36,8 +36,10 @@ struct HelpButtonView: NSViewRepresentable {
   var action: HelpButton.Action
 
   func makeNSView(context: Context) -> HelpButton {
-    HelpButton(action: action)
+    .init(action: action)
   }
 
-  func updateNSView(_ nsView: HelpButton, context: Context) {}
+  func updateNSView(_ buttonView: HelpButton, context: Context) {
+    buttonView.perform = action
+  }
 }

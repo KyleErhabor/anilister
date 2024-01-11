@@ -1,5 +1,5 @@
 //
-//  Standard.swift
+//  AniLister+Standard.swift
 //  AniLister
 //
 //  Created by Kyle Erhabor on 1/11/24.
@@ -15,8 +15,4 @@ extension Bundle {
 
 extension Logger {
   static let ui = Self(subsystem: Bundle.identifier, category: "UI")
-}
-
-extension UserDefaults {
-  static let group = UserDefaults(suiteName: "\(Bundle.teamIdentifier).\(Bundle.identifier)")!
 }

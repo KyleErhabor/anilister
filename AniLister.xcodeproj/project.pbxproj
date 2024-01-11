@@ -10,6 +10,9 @@
 		002C10B02A6C817C00449C14 /* SafariExtensionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C10AF2A6C817C00449C14 /* SafariExtensionHandler.swift */; };
 		002C10B32A6C992400449C14 /* script.js in Resources */ = {isa = PBXBuildFile; fileRef = 002C10B22A6C927200449C14 /* script.js */; };
 		002C10B52A6D9EE100449C14 /* HelpButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 002C10B42A6D9EE100449C14 /* HelpButtonView.swift */; };
+		005D1D1E2B4FCD4600458267 /* AniLister+Standard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D1D1D2B4FCD4600458267 /* AniLister+Standard.swift */; };
+		005D1D232B4FCEC700458267 /* Standard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D1D222B4FCEC700458267 /* Standard.swift */; };
+		005D1D242B4FCEC700458267 /* Standard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 005D1D222B4FCEC700458267 /* Standard.swift */; };
 		0099DD852A6B67520058DDEE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0099DD842A6B67520058DDEE /* Assets.xcassets */; };
 		0099DD8D2A6B67520058DDEE /* AniLister Extension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 0099DD8C2A6B67520058DDEE /* AniLister Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		0099DDA92A6B6E780058DDEE /* AniListerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0099DDA82A6B6E780058DDEE /* AniListerApp.swift */; };
@@ -49,6 +52,8 @@
 		002C10B62A6DC2CA00449C14 /* LICENSE */ = {isa = PBXFileReference; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		002C10B72A6DC2E300449C14 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		002C10B92A6DCA7F00449C14 /* Example.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Example.png; sourceTree = "<group>"; };
+		005D1D1D2B4FCD4600458267 /* AniLister+Standard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AniLister+Standard.swift"; sourceTree = "<group>"; };
+		005D1D222B4FCEC700458267 /* Standard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Standard.swift; sourceTree = "<group>"; };
 		0099DD702A6B674A0058DDEE /* AniLister.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AniLister.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0099DD842A6B67520058DDEE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0099DD8C2A6B67520058DDEE /* AniLister Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "AniLister Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -92,11 +97,20 @@
 			path = Documentation;
 			sourceTree = "<group>";
 		};
+		005D1D212B4FCEBA00458267 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				005D1D222B4FCEC700458267 /* Standard.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		0099DD672A6B674A0058DDEE = {
 			isa = PBXGroup;
 			children = (
 				002C10B72A6DC2E300449C14 /* README.md */,
 				002C10B62A6DC2CA00449C14 /* LICENSE */,
+				005D1D212B4FCEBA00458267 /* Shared */,
 				0099DD722A6B674A0058DDEE /* AniLister */,
 				0099DD902A6B67520058DDEE /* AniLister Extension */,
 				002C10B82A6DCA3700449C14 /* Documentation */,
@@ -117,6 +131,7 @@
 			isa = PBXGroup;
 			children = (
 				0099DDA82A6B6E780058DDEE /* AniListerApp.swift */,
+				005D1D1D2B4FCD4600458267 /* AniLister+Standard.swift */,
 				0099DDAA2A6B6FF50058DDEE /* ContentView.swift */,
 				002C10B42A6D9EE100449C14 /* HelpButtonView.swift */,
 				002C10A42A6C711E00449C14 /* AniLister.entitlements */,
@@ -240,7 +255,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				002C10B52A6D9EE100449C14 /* HelpButtonView.swift in Sources */,
+				005D1D232B4FCEC700458267 /* Standard.swift in Sources */,
 				0099DDAB2A6B6FF50058DDEE /* ContentView.swift in Sources */,
+				005D1D1E2B4FCD4600458267 /* AniLister+Standard.swift in Sources */,
 				0099DDA92A6B6E780058DDEE /* AniListerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				005D1D242B4FCEC700458267 /* Standard.swift in Sources */,
 				002C10B02A6C817C00449C14 /* SafariExtensionHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

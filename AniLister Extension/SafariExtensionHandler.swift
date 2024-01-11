@@ -6,16 +6,19 @@
 //
 
 import SafariServices
-import os
+import OSLog
 
-let appGroupDefaults = UserDefaults(suiteName: "UY7357XWK6.com.kyleerhabor.AniLister")!
+extension Logger {
+  static let standard = Self()
+}
 
-let logger = Logger()
-let malBaseUrl = URL(string: "https://api.myanimelist.net/v2")!
-let jikanBaseUrl = URL(string: "https://api.jikan.moe/v4")!
+extension URL {
+  static let malAPIURL = Self(string: "https://api.myanimelist.net/v2")!
+  static let jikanAPIURL = Self(string: "https://api.jikan.moe/v4")!
+}
 
 func malClientId() -> String? {
-  guard let id = appGroupDefaults.string(forKey: "malClientId"),
+  guard let id = UserDefaults.group.string(forKey: UserDefaults.malClientIDKey),
         !id.isEmpty else {
     return nil
   }
@@ -24,32 +27,34 @@ func malClientId() -> String? {
 }
 
 class SafariExtensionHandler: SFSafariExtensionHandler {
-  override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String : Any]? = nil) {
+  override func messageReceived(withName messageName: String, from page: SFSafariPage, userInfo: [String: Any]? = nil) {
     guard messageName == "MALQuery" else {
-      logger.warning("Unknown message received: \(messageName)")
+      Logger.standard.error("Unknown message received: \(messageName)")
 
       return
     }
 
-    let info = userInfo!
-    let type = info["type"] as! String
-    let id = info["id"] as! Int
+    guard let info = userInfo,
+          let type = info["type"] as? String,
+          let id = info["id"] as? Int else {
+      Logger.standard.error("Info payload could not be extracted")
+
+      return
+    }
 
     Task {
       var request: URLRequest
       let clientId = malClientId()
 
       if let clientId {
-        let url = malBaseUrl
+        let url = URL.malAPIURL
           .appending(components: type, String(id))
           .appending(queryItems: [.init(name: "fields", value: "synopsis")])
 
         request = URLRequest(url: url)
         request.setValue(clientId, forHTTPHeaderField: "X-MAL-CLIENT-ID")
       } else {
-        logger.info("ljdskajfsjdflksjdf: Using Jikan")
-
-        let url = jikanBaseUrl
+        let url = URL.jikanAPIURL
           .appending(components: type, String(id))
 
         request = URLRequest(url: url)
@@ -64,7 +69,7 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
       guard let synopsis = (
         clientId == nil
           // Jikan
-          ? (body["data"] as? [String : Any])?["synopsis"]
+          ? (body["data"] as? [String: Any])?["synopsis"]
           // MyAnimeList
           : body["synopsis"]
       // While Jikan doesn't do this, MyAnimeList does return empty synopses, which we don't want.
@@ -74,11 +79,13 @@ class SafariExtensionHandler: SFSafariExtensionHandler {
         return
       }
 
-      if appGroupDefaults.bool(forKey: "onlyMalRewrite") && !synopsis.contains("Written by MAL Rewrite") {
+      if UserDefaults.group.bool(forKey: UserDefaults.malRewriteKey) && !synopsis.contains("Written by MAL Rewrite") {
         return
       }
 
-      page.dispatchMessageToScript(withName: "MALResponse", userInfo: ["synopsis": synopsis])
+      let message = ["synopsis": synopsis]
+
+      page.dispatchMessageToScript(withName: "MALResponse", userInfo: message)
     }
   }
 }

@@ -1,4 +1,4 @@
-const second = 1000;
+const second = 1_000;
 const query = `
 query($id: Int) {
   Media(id: $id) {
@@ -113,7 +113,14 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
 safari.self.addEventListener("message", ({ name, message }) => {
   if (name !== "MALResponse") {
-    console.log(`Unknown message response: ${name}`);
+    console.error(`Unknown message response: ${name}`);
+
+    return;
+  }
+
+  // We could use the page on the backend for this.
+  if (getPage() === undefined) {
+    console.error("Received app response, but page is incorrect.");
 
     return;
   }
